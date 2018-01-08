@@ -21,10 +21,18 @@ public class weapon_management : MonoBehaviour {
 
     void drop_weapon()
     {
-        Vector3 pos = transform.forward;
+        if (weapons.Count < 2)
+            return;
+        Vector3 pos = transform.position + transform.forward;
         GameObject obj = Instantiate(weapon_box, pos, Quaternion.identity);
         weapon_taking wp_tak = obj.AddComponent<weapon_taking>();
         wp_tak.spawner = null;
+        wp_tak.owner = this.gameObject;
+        wp_tak.wp = weapons[index];
+        weapons.RemoveAt(index);
+        index = index - 1;
+        if (index < 0)
+            index = 0;
     }
 
     public void pick_up_weapon(weapon wp)
@@ -58,6 +66,7 @@ public class weapon_management : MonoBehaviour {
     void Update() {
         weapon current_weapon = weapons[index];
         bool shooting = CrossPlatformInputManager.GetButton("Fire1");
+        bool drop = CrossPlatformInputManager.GetButtonDown("Drop");
         float scroll = CrossPlatformInputManager.GetAxis("Mouse ScrollWheel");
 
         time_since_last_shoot += Time.deltaTime;
@@ -78,6 +87,10 @@ public class weapon_management : MonoBehaviour {
         if (scroll != 0)
         {
             dc.ui.refresh_weapon();
+        }
+        if (drop)
+        {
+            drop_weapon();
         }
     }
 }

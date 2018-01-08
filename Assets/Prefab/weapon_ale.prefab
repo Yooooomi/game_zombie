@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114303647467353172}
   - component: {fileID: 65605571300535276}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: weapon_ale
   m_TagString: pick_up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6842361dc43ce2428e3ca123193d678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   spawner: {fileID: 0}
+  dropped: 0
   wp:
     Name: "al\xE9"
     clip_cap: 30
