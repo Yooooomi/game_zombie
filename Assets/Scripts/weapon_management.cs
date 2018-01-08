@@ -11,6 +11,8 @@ public class weapon_management : MonoBehaviour {
     public int index = 0;
     public List<weapon> weapons = new List<weapon>();
     private float time_since_last_shoot = 0;
+    public GameObject weapon_box;
+
     // Use this for initialization
 	void Start () {
         weapons.Add(new weapon());
@@ -19,6 +21,10 @@ public class weapon_management : MonoBehaviour {
 
     void drop_weapon()
     {
+        Vector3 pos = transform.forward;
+        GameObject obj = Instantiate(weapon_box, pos, Quaternion.identity);
+        weapon_taking wp_tak = obj.AddComponent<weapon_taking>();
+        wp_tak.spawner = null;
     }
 
     public void pick_up_weapon(weapon wp)
