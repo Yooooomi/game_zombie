@@ -8,7 +8,6 @@ public class weapon_management : MonoBehaviour {
     public GameObject wp_obj;
     public Camera cam;
     public int index = 0;
-    public int nbr_weapon = 1;
     public List<weapon> weapons = new List<weapon>();
     private float time_since_last_shoot = 0;
     // Use this for initialization
@@ -23,7 +22,8 @@ public class weapon_management : MonoBehaviour {
         Vector3 direction = wp_obj.transform.forward;
         Ray ray = new Ray(wp_obj.transform.position, direction);
         RaycastHit result;
-       
+
+        Debug.DrawLine(ray.origin, ray.direction * 1000);
         if (Physics.Raycast(ray, out result, wp.range))
             Debug.Log("touché");
         wp.clip_ammo--;
