@@ -222,6 +222,16 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1286658996}
+    - target: {fileID: 114736822952994298, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114709542272521384, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: rotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e, type: 2}
   m_IsPrefabParent: 0
@@ -288,6 +298,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
