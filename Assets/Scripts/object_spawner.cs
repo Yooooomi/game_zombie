@@ -9,7 +9,7 @@ public class object_spawner : MonoBehaviour {
     private float spawn_wait;
     public bool obj_on = false;
     private const float random_influance = 10;
-    public data_base_spawner data;
+    private data_base_spawner data = GameObject.Find("data_base_spawner").GetComponent<data_base_spawner>();
     // Use this for initialization
 
     private float get_new_spawn_wait ()
