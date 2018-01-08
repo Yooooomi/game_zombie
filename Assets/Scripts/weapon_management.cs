@@ -5,6 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class weapon_management : MonoBehaviour {
 
+    public GameObject wp_obj;
     public Camera cam;
     public int index = 0;
     public int nbr_weapon = 1;
@@ -19,12 +20,10 @@ public class weapon_management : MonoBehaviour {
     void shoot(weapon wp)
     {
         Vector3 mouse_pos = Input.mousePosition;
-        Vector3 direction = cam.ScreenToWorldPoint(mouse_pos);
-        direction -= transform.position;
-        Ray ray = new Ray(gameObject.transform.position, direction);
+        Vector3 direction = wp_obj.transform.forward;
+        Ray ray = new Ray(wp_obj.transform.position, direction);
         RaycastHit result;
-
-        Debug.DrawLine(ray.origin, ray.direction);
+       
         if (Physics.Raycast(ray, out result, wp.range))
             Debug.Log("touché");
         wp.clip_ammo--;
