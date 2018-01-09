@@ -7,11 +7,12 @@ public class movement : MonoBehaviour {
 
 	private stats st;
 	public Camera cam;
+	public float rotateSpeed = 0;
 
 	// Use this for initialization
 	void Start () {
 		st = GetComponent<stats> ();
-        Debug.Log("Commencé");
+		Debug.Log("Commencé");
 	}
 
 	void lookAtMouse()
@@ -20,11 +21,14 @@ public class movement : MonoBehaviour {
 		Vector3 tmp = Vector3.zero;
 		Ray r = cam.ScreenPointToRay (mousePos);
 		RaycastHit result;
+		Vector3 tmpp = Vector3.zero;
 
 		if (Physics.Raycast (r, out result)) {
 			tmp = result.point;
 			tmp.y = transform.position.y;
-			transform.LookAt (tmp);
+			tmpp = tmp - transform.position;
+			Quaternion angle = Quaternion.LookRotation (tmpp);
+			transform.rotation = Quaternion.Lerp (transform.rotation, angle, rotateSpeed * Time.deltaTime);
 		}
 	}
 
@@ -37,6 +41,7 @@ public class movement : MonoBehaviour {
 		if (h != 0 || v != 0) {
 			dir = new Vector3 (h, 0, v);
 			dir *= st.moveSpeed / dir.magnitude;
+			dir *= Time.deltaTime;
 		}
 		Debug.Log (dir.magnitude);
 
