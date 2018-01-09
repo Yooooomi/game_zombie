@@ -10,5 +10,6 @@ public class health_tacking : obj_taking {
     {
         base.apply_on_player(dc);
         dc.st.curHealth += health_restored;
+        Destroy(this.gameObject);
     }
 }
