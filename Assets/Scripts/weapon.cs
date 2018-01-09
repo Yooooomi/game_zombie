@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour {
 
-    public string Name;
-    public int clip_cap;
-    public int max_ammo;
-    public int clip_ammo;
-    public int ammo;
-    public float fire_rate;
-    public float reload_time;
-    public float range;
+    public string Name = "defaut";
+    public int clip_cap = 30;
+    public int max_ammo = 90;
+    public int clip_ammo = 30;
+    public int ammo = 90;
+    public float fire_rate = 0.1f;
+    public float reload_time = 0.5f;
+    public float range = 100;
+
+    public weapon()
+    {
+
+    }
 
     public bool can_fire()
     {
