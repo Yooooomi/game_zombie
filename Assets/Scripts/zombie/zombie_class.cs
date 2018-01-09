@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class zombie_class {
     public int max_hp;
     public int curr_hp;

@@ -15,9 +15,9 @@ public class attack_manager : MonoBehaviour {
 
     private GameObject get_target()
     {
-        float min = list_player.Min(s => Vector3.Distance(s.transform.position, target.transform.position));
+        float min = list_player.Min(s => Vector3.Distance(s.transform.position, transform.position));
         foreach (GameObject ply in list_player)
-            if (Vector3.Distance(ply.transform.position, target.transform.position) == min)
+            if (Vector3.Distance(ply.transform.position, transform.position) == min)
                 return (ply);
         return (null);
     }
@@ -34,12 +34,12 @@ public class attack_manager : MonoBehaviour {
 	void Update () {
         time_last_attack += Time.deltaTime;
         time_last_target_update += Time.deltaTime;
-		if (time_last_attack < ref_zombie.attack_speed && attack_distance > Vector3.Distance(target.transform.position, transform.position))
+		if (time_last_attack > ref_zombie.attack_speed && Vector3.Distance(target.transform.position, transform.position) < attack_distance)
         {
             target.GetComponent<stats>().curHealth -= ref_zombie.damage; //deal_damages(ref_zombie.damage);
             time_last_attack = 0;
         }
-        if (time_last_target_update < time_update_target)
+        if (time_last_target_update > time_update_target)
         {
             target = get_target();
             time_last_target_update = 0;
