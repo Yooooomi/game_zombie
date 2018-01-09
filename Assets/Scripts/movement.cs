@@ -11,6 +11,8 @@ public class movement : MonoBehaviour {
 	public Camera cam;
 	public float rotateSpeed = 0;
 
+    public GameObject wp_obj;
+
 	// Use this for initialization
 	void Start () {
         cc = GetComponent<CharacterController>();
@@ -28,10 +30,10 @@ public class movement : MonoBehaviour {
 
         if (Physics.Raycast (ray, out result)) {
 			tmp = result.point;
-			tmp.y = transform.position.y;
-			tmp = tmp - transform.position;
+			tmp.y = wp_obj.transform.position.y;
+			tmp = tmp - wp_obj.transform.position;
             angle = Quaternion.LookRotation(tmp);
-                transform.rotation = Quaternion.Lerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(wp_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
 		}
 	}
 
