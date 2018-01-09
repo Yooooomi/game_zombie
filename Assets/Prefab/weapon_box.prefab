@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4678986271703084}
   - component: {fileID: 33680510013177556}
-  - component: {fileID: 65260890580969178}
   - component: {fileID: 23216598771497230}
+  - component: {fileID: 135422641644645938}
   m_Layer: 0
   m_Name: weapon_box
-  m_TagString: Untagged
+  m_TagString: pick_up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713126123667168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.051921844, y: 0.4575739, z: 0.8391349}
+  m_LocalPosition: {x: -1.7927742, y: 0.05, z: -0.44022647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b13aaff5b9b5aae4c861d866b1264cc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,8 +83,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713126123667168}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65260890580969178
-BoxCollider:
+--- !u!135 &135422641644645938
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2.0623174
+  m_Center: {x: 0, y: 1.5623174, z: 0}

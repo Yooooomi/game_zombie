@@ -21,13 +21,14 @@ public class movement : MonoBehaviour {
 		Vector3 tmp = Vector3.zero;
 		Ray ray = cam.ScreenPointToRay (mousePos);
         RaycastHit result;
+        Quaternion angle;
 
         if (Physics.Raycast (ray, out result)) {
 			tmp = result.point;
 			tmp.y = transform.position.y;
 			tmp = tmp - transform.position;
-			Quaternion angle = Quaternion.LookRotation (tmp);
-			transform.rotation = Quaternion.Lerp (transform.rotation, angle, rotateSpeed * Time.deltaTime);
+            angle = Quaternion.LookRotation(tmp);
+                transform.rotation = Quaternion.Lerp(transform.rotation, angle, rotateSpeed * Time.deltaTime);
 		}
 	}
 
