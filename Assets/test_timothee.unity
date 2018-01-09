@@ -716,11 +716,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   common_obj:
-  - {fileID: 1141324014758088, guid: f07e5544d82a88c4cbe29d9c2eb40d05, type: 2}
+  - {fileID: 1184214803638218, guid: f45a31a224ab70742bb6776db45131e3, type: 2}
   rare_obj:
-  - {fileID: 1141324014758088, guid: f07e5544d82a88c4cbe29d9c2eb40d05, type: 2}
+  - {fileID: 1184214803638218, guid: f45a31a224ab70742bb6776db45131e3, type: 2}
   epic_obj:
-  - {fileID: 1141324014758088, guid: f07e5544d82a88c4cbe29d9c2eb40d05, type: 2}
+  - {fileID: 1184214803638218, guid: f45a31a224ab70742bb6776db45131e3, type: 2}
 --- !u!4 &920689965
 Transform:
   m_ObjectHideFlags: 0
@@ -783,6 +783,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114330987010235308, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: ammos.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4723231683102928, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -835,6 +840,16 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1286658996}
+    - target: {fileID: 114330987010235308, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: ammos.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114330987010235308, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: ammos.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e, type: 2}
   m_IsPrefabParent: 0

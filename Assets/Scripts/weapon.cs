@@ -6,18 +6,23 @@ using UnityEngine;
 public class weapon {
 
     public string Name = "defaut";
+    public bool auto = true;
     public int damages = 10;
     public int clip_cap = 30;
-    public int max_ammo = 90;
     public int clip_ammo = 30;
-    public int ammo = 90;
-    public float fire_rate = 0.1f;
+    public float fire_rate = 7;
     public float reload_time = 0.5f;
     public float range = 100;
+    public int type = 0;
 
     public weapon()
     {
 
+    }
+
+    public float get_fire_rate()
+    {
+        return (fire_rate / 100);
     }
 
     public weapon(string name)
@@ -32,19 +37,4 @@ public class weapon {
         else
             return (false);
     }
-
-    public void reload()
-    {
-        if (clip_ammo == clip_cap || ammo == 0)
-            return;
-        else if (ammo >= clip_cap - clip_ammo)
-        {
-            ammo -= clip_cap - clip_ammo;
-            clip_ammo = clip_cap;
-        } else if (ammo < clip_cap - clip_ammo) {
-            clip_ammo += ammo;
-            ammo = 0;
-        }
-    }
-
 }
