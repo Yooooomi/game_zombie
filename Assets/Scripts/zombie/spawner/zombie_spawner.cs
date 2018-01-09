@@ -25,7 +25,7 @@ public class zombie_spawner : MonoBehaviour {
             Vector3 pos = transform.position;
             GameObject zb;
 
-            pos.y += transform.position.y;
+            pos.y += transform.localScale.y;
             zb = Instantiate(zombie_list[UnityEngine.Random.Range(0, zombie_list.Count - 1)], pos, Quaternion.identity);
             last_difficulty = zb.GetComponent<zombie_manager>().stats.diffuculty;
             time_since_last_spawn = 0;

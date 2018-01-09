@@ -11,7 +11,7 @@ public class game_data_base : MonoBehaviour {
     private float time_spawn_zombie = 3;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		player_list = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         zombie_list.OrderBy(s => s.GetComponent<zombie_manager>().stats.diffuculty);
     }
