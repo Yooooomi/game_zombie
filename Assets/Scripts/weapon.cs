@@ -13,6 +13,14 @@ public class weapon : MonoBehaviour {
     public float reload_time;
     public float range;
 
+    public bool can_fire()
+    {
+        if (clip_ammo > 0)
+            return (true);
+        else
+            return (false);
+    }
+
     public void reload()
     {
         if (clip_ammo == clip_cap || ammo == 0)

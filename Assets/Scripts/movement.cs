@@ -19,29 +19,31 @@ public class movement : MonoBehaviour {
 	{
 		Vector3 mousePos = Input.mousePosition;
 		Vector3 tmp = Vector3.zero;
-		Ray r = cam.ScreenPointToRay (mousePos);
-		RaycastHit result;
-		Vector3 tmpp = Vector3.zero;
+		Ray ray = cam.ScreenPointToRay (mousePos);
+        RaycastHit result;
 
-		if (Physics.Raycast (r, out result)) {
+        if (Physics.Raycast (ray, out result)) {
 			tmp = result.point;
 			tmp.y = transform.position.y;
-			tmpp = tmp - transform.position;
-			Quaternion angle = Quaternion.LookRotation (tmpp);
+			tmp = tmp - transform.position;
+			Quaternion angle = Quaternion.LookRotation (tmp);
 			transform.rotation = Quaternion.Lerp (transform.rotation, angle, rotateSpeed * Time.deltaTime);
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
-		float v = CrossPlatformInputManager.GetAxis ("Vertical");
-		float h = CrossPlatformInputManager.GetAxis ("Horizontal");
-		Vector3 dir = Vector3.zero;
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        Vector3 dir = Vector3.zero;
+        bool isSprint = CrossPlatformInputManager.GetButton("Sprint");
 
 		if (h != 0 || v != 0) {
 			dir = new Vector3 (h, 0, v);
-			dir *= st.moveSpeed / dir.magnitude;
-			dir *= Time.deltaTime;
+            dir *= st.moveSpeed / dir.magnitude;
+            if (isSprint)
+                dir *= st.sprintMultiplier;
+            dir *= Time.deltaTime;
 		}
 		Debug.Log (dir.magnitude);
 
