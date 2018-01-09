@@ -12,19 +12,16 @@ public class weapon_management : MonoBehaviour {
     private float time_since_last_shoot = 0;
     // Use this for initialization
 	void Start () {
-        //weapons.Add(new weapon());
+        weapons.Add(new weapon());
     }
 
     // Update is called once per frame
     void shoot(weapon wp)
     {
-        Vector3 mouse_pos = Input.mousePosition;
-        Vector3 direction = cam.ScreenToWorldPoint(mouse_pos);
-        direction -= transform.position;
-        Ray ray = new Ray(gameObject.transform.position, direction);
+        Ray ray = new Ray(gameObject.transform.position, transform.forward);
         RaycastHit result;
 
-        Debug.DrawLine(ray.origin, ray.direction);
+        Debug.DrawLine(ray.origin, ray.direction * 1000, Color.black);
         if (Physics.Raycast(ray, out result, wp.range))
             Debug.Log("touché");
         wp.clip_ammo--;
