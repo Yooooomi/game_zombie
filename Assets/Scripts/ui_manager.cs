@@ -9,7 +9,14 @@ public class ui_manager : MonoBehaviour {
     public Text ammo_text;
     public Text weapon_name_text;
 
+    public Text health_text;
+
     public List<Text> ammo_texts;
+
+    public void refresh_health()
+    {
+        health_text.text = dc.st.curHealth.ToString();
+    }
 
     public void refresh_weapon()
     {

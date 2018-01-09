@@ -8,7 +8,7 @@ public class attack_manager : MonoBehaviour {
     private zombie_class ref_zombie;
     private float time_last_attack = 0;
     private GameObject target;
-    private List<GameObject> list_player;
+    private List<GameObject> list_player = new List<GameObject>();
     public float attack_distance = 0.5f;
     private float time_update_target = 5f;
     private float time_last_target_update = 0;

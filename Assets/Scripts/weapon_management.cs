@@ -27,6 +27,8 @@ public class weapon_management : MonoBehaviour {
         }
         weapons.Add(new weapon());
         weapons.Add(new weapon());
+        dc.ui.refresh_weapon();
+        dc.ui.refresh_ammos();
     }
 
     public void add_ammos(int type, int amount)
@@ -55,10 +57,10 @@ public class weapon_management : MonoBehaviour {
         return (true);
     }
 
-    void drop_weapon()
+    bool drop_weapon()
     {
         if (weapons.Count < 2)
-            return;
+            return false;
         Vector3 pos = transform.position + transform.forward;
         GameObject obj = Instantiate(weapon_box, pos, Quaternion.identity);
         weapon_taking wp_tak = obj.AddComponent<weapon_taking>();
@@ -69,6 +71,7 @@ public class weapon_management : MonoBehaviour {
         index = index - 1;
         if (index < 0)
             index = 0;
+        return true;
     }
 
     public void pick_up_weapon(weapon wp)
@@ -87,7 +90,6 @@ public class weapon_management : MonoBehaviour {
     // Update is called once per frame
     void shoot(weapon wp)
     {
-        Vector3 mouse_pos = Input.mousePosition;
         Vector3 direction = wp_obj.transform.forward;
         Ray ray = new Ray(wp_obj.transform.position, direction);
         RaycastHit result;
@@ -116,7 +118,7 @@ public class weapon_management : MonoBehaviour {
         {
             if (reload())
             {
-                time_since_last_shoot -= current_weapon.reload_time;
+                time_since_last_shoot = - current_weapon.reload_time;
             }
         }
         if (current_weapon.auto)
@@ -149,7 +151,10 @@ public class weapon_management : MonoBehaviour {
         }
         if (drop)
         {
-            drop_weapon();
+            if (drop_weapon())
+            {
+                dc.ui.refresh_weapon();
+            }
         }
     }
 }
