@@ -45,7 +45,6 @@ public class movement : MonoBehaviour {
                 dir *= st.sprintMultiplier;
             dir *= Time.deltaTime;
 		}
-		Debug.Log (dir.magnitude);
 
 		gameObject.transform.position += dir;
 		lookAtMouse ();
