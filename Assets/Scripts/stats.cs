@@ -7,4 +7,6 @@ public class stats : MonoBehaviour {
     public float sprintMultiplier;
 	public float maxHealth;
 	public float curHealth;
+
+    public List<weapon> weapons;
 }

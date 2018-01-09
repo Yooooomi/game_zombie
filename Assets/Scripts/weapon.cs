@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class weapon : MonoBehaviour {
+public class weapon {
 
     public string Name = "defaut";
     public int clip_cap = 30;
