@@ -8,7 +8,9 @@ public class weapon_taking : obj_taking {
 
     public override void apply_on_player(data_center dc)
     {
+        base.apply_on_player(dc);
         Debug.Log("PICK UP");
         dc.wp_man.pick_up_weapon(wp);
+        Destroy(this.gameObject);
     }
 }

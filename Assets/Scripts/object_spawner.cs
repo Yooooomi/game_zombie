@@ -32,7 +32,8 @@ public class object_spawner : MonoBehaviour {
             Debug.Log("Spawn");
             pos = transform.position;
             pos.y += 3;
-            Instantiate(data.get_spawn_obj(), pos, Quaternion.identity);
+            GameObject obj = Instantiate(data.get_spawn_obj(), pos, Quaternion.identity);
+            obj.GetComponent<obj_taking>().spawner = this;
             obj_on = true;
             spawn_wait = get_new_spawn_wait();
             time_last_spawn = 0;
