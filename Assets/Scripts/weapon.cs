@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class weapon : MonoBehaviour {
 
     public string Name = "defaut";
@@ -16,6 +17,11 @@ public class weapon : MonoBehaviour {
     public weapon()
     {
 
+    }
+
+    public weapon(string name)
+    {
+        this.Name = name;
     }
 
     public bool can_fire()
