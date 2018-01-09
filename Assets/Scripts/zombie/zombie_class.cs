@@ -9,9 +9,11 @@ public class zombie_class {
     public float speed;
     public float damage;
     public float attack_speed;
+    public int diffuculty;
 
     public zombie_class()
     {
+        diffuculty = 1;
         max_hp = 100;
         curr_hp = 100;
         speed = 3;

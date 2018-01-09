@@ -19,6 +19,7 @@ public class attack_manager : MonoBehaviour {
         foreach (GameObject ply in list_player)
             if (Vector3.Distance(ply.transform.position, transform.position) == min)
                 return (ply);
+        Debug.Log("null taget");
         return (null);
     }
 	// Use this for initialization
@@ -36,6 +37,7 @@ public class attack_manager : MonoBehaviour {
         time_last_target_update += Time.deltaTime;
 		if (time_last_attack > ref_zombie.attack_speed && Vector3.Distance(target.transform.position, transform.position) < attack_distance)
         {
+            Debug.Log("OKAy");
             target.GetComponent<stats>().deal_damages(ref_zombie.damage); //deal_damages(ref_zombie.damage);
             time_last_attack = 0;
         }
