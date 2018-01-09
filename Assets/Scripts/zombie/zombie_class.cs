@@ -4,8 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public class zombie_class {
-    public int max_hp;
-    public int curr_hp;
+    public float max_hp;
+    public float curr_hp;
     public float speed;
     public float damage;
     public float attack_speed;
