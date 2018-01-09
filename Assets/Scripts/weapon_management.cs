@@ -58,7 +58,13 @@ public class weapon_management : MonoBehaviour {
 
         Debug.DrawLine(ray.origin, ray.direction * 1000, Color.black);
         if (Physics.Raycast(ray, out result, wp.range))
+        {
+            if (result.collider.gameObject.CompareTag("Zombie"))
+            {
+                result.collider.gameObject.GetComponent<zombie_manager>().deal_damages(weapons[index].damages);
+            }
             Debug.Log("touché");
+        }
         wp.clip_ammo--;
         dc.ui.refresh_weapon();
     }

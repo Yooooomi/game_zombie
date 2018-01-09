@@ -9,11 +9,6 @@ public class ui_manager : MonoBehaviour {
     public Text ammo_text;
     public Text weapon_name_text;
 
-    private void Start()
-    {
-        refresh_weapon();
-    }
-
     public void refresh_weapon()
     {
         weapon cur_wp = dc.wp_man.weapons[dc.wp_man.index];
