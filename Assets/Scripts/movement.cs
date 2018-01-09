@@ -6,11 +6,14 @@ using UnityEngine;
 public class movement : MonoBehaviour {
 
 	private stats st;
+    private CharacterController cc;
+
 	public Camera cam;
 	public float rotateSpeed = 0;
 
 	// Use this for initialization
 	void Start () {
+        cc = GetComponent<CharacterController>();
 		st = GetComponent<stats> ();
 		Debug.Log("Commencé");
 	}
@@ -45,8 +48,11 @@ public class movement : MonoBehaviour {
                 dir *= st.sprintMultiplier;
             dir *= Time.deltaTime;
 		}
-
-		gameObject.transform.position += dir;
+        if (!cc.isGrounded)
+        {
+            dir.y = Physics.gravity.y * Time.deltaTime;
+        }
+		cc.Move(dir);
 		lookAtMouse ();
 	}
 }

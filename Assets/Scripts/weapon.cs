@@ -6,6 +6,7 @@ using UnityEngine;
 public class weapon {
 
     public string Name = "defaut";
+    public int damages = 10;
     public int clip_cap = 30;
     public int max_ammo = 90;
     public int clip_ammo = 30;
