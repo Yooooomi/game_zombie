@@ -8,4 +8,10 @@ public class data_center : MonoBehaviour {
     public Camera cam;
     public weapon_management wp_man;
     public ui_manager ui;
+    public dot_manager dot;
+
+    private void Awake()
+    {
+        dot = GetComponent<dot_manager>();
+    }
 }

@@ -48,6 +48,7 @@ public class stats : MonoBehaviour {
 
     void Update()
     {
+        dc.dot.call_dot(dc);
         if (curHealth > maxHealth)
         {
             curHealth -= to_maxhealth_speed * Time.deltaTime;
