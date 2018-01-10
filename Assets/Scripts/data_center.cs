@@ -13,10 +13,10 @@ public class data_center : MonoBehaviour
     public movement mov;
     public dot_manager dot;
 
-    public List<Func<float, float>> func_health = new List<Func<float, float>>();
-    public List<Func<float, float>> func_health_malus = new List<Func<float, float>>();
-    public List<Func<float, float>> func_damages = new List<Func<float, float>>();
-    public List<Func<float, float>> func_damages_malus = new List<Func<float, float>>();
+    public List<perk_obj> func_health = new List<perk_obj>();
+    public List<perk_obj> func_health_malus = new List<perk_obj>();
+    public List<perk_obj> func_damages = new List<perk_obj>();
+    public List<perk_obj> func_damages_malus = new List<perk_obj>();
 
     private void Awake()
     {

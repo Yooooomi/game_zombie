@@ -20,18 +20,19 @@ public class stats : MonoBehaviour {
         dc = GetComponent<data_center>();
         dc.ui.refresh_health();
         dc.ui.refresh_points();
-        dc.func_health.Add(double_health_perk.double_health);
+        dc.func_health.Add(new perk_obj("double health", 1, double_health_perk.double_health, 3));
+        add_health(100);
     }
 
     private float get_real_health(float health)
     {
         for (int i = 0; i < dc.func_health.Count; i++)
         {
-            health = dc.func_health[i](health);
+            health = dc.func_health[i].function(health);
         }
         for (int i = 0; i < dc.func_health_malus.Count; i++)
         {
-            health = dc.func_health_malus[i](health);
+            health = dc.func_health_malus[i].function(health);
         }
         return (health);
     }
@@ -43,6 +44,7 @@ public class stats : MonoBehaviour {
 
     public void add_health(float health)
     {
+        health = get_real_health(health);
         curHealth += health;
         if (health > maxhealth_boosted)
         {
