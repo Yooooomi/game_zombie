@@ -10,15 +10,15 @@ public class double_health_perk : perk {
         return (h * 5);
     }
 
-    public override void on_add(data_center dc)
+    public override void add_on(data_center dc)
     {
-        base.on_add(dc);
-        dc.func_health.Add(new perk_obj);
+        base.add_on(dc);
+        dc.func_health.Add(new perk_func(double_health, 1));
     }
 
-    public override void on_remove(data_center dc)
+    public override void remove_on(data_center dc)
     {
-        base.on_remove(dc);
-        dc.func_health.Remove(dc.func_health.First(s => s.Name == p_obj.Name));
+        base.remove_on(dc);
+        dc.remove_func(double_health, dc.func_health);
     }
 }

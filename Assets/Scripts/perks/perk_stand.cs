@@ -21,7 +21,7 @@ public class perk_stand : MonoBehaviour {
         {
             Debug.Log("BOUGHT");
             dc.st.remove_coin_perks(1);
-            this_perk.on_add(dc);
+            this_perk.add_on(dc);
         }
     }
 }
