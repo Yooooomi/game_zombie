@@ -635,12 +635,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 223097481448330682, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1286658996}
-    - target: {fileID: 114709542272521384, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+    - target: {fileID: 114238975778230570, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
         type: 2}
       propertyPath: cam
       value: 
@@ -650,9 +645,14 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1286658996}
-    - target: {fileID: 114238975778230570, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+    - target: {fileID: 114709542272521384, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
         type: 2}
       propertyPath: cam
+      value: 
+      objectReference: {fileID: 1286658996}
+    - target: {fileID: 223097481448330682, guid: 6bc1b7ab3e0b43e47af5777bc0a02f1e,
+        type: 2}
+      propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1286658996}
     m_RemovedComponents: []
@@ -961,7 +961,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4565140734524926, guid: 4beeeaf3f409ab24ab3767b69e27ca3e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -5.94
+      value: -3.43
       objectReference: {fileID: 0}
     - target: {fileID: 4565140734524926, guid: 4beeeaf3f409ab24ab3767b69e27ca3e, type: 2}
       propertyPath: m_LocalPosition.y

@@ -12,6 +12,7 @@ public class zombie_manager : MonoBehaviour {
     {
         ParticleSystem.EmissionModule em = particles.emission;
         stats.curr_hp -= dmg;
+
         if (stats.curr_hp < stats.max_hp)
             em.rateOverTime = 5 + (15 - 15 * (stats.curr_hp / stats.max_hp));
         if (stats.curr_hp <= 0)
