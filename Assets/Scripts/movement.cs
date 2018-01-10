@@ -10,6 +10,7 @@ public class movement : MonoBehaviour {
 
 	public Camera cam;
 	public float rotateSpeed = 0;
+    public bool is_interact = false;
 
     public GameObject wp_obj;
 
@@ -44,6 +45,7 @@ public class movement : MonoBehaviour {
         Vector3 dir = Vector3.zero;
         bool isSprint = CrossPlatformInputManager.GetButton("Sprint");
 
+        is_interact = CrossPlatformInputManager.GetButtonDown("Interact");
 		if (h != 0 || v != 0) {
 			dir = new Vector3 (h, 0, v);
             dir *= st.moveSpeed / dir.magnitude;
