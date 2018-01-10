@@ -8,6 +8,7 @@ public class ui_manager : MonoBehaviour {
     public data_center dc;
     public Text ammo_text;
     public Text weapon_name_text;
+    public Text points_text;
 
     public Text health_text;
 
@@ -33,5 +34,8 @@ public class ui_manager : MonoBehaviour {
             ammo_texts[i].text = dc.wp_man.ammos[i].ToString();
         }
     }
-
+    public void refresh_points()
+    {
+        points_text.text = dc.st.points.ToString();
+    }
 }

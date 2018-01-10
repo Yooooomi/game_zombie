@@ -7,7 +7,7 @@ public class weapon {
 
     public string Name = "defaut";
     public bool auto = true;
-    public int damages = 100;
+    public int damages = 40;
     public int clip_cap = 30;
     public int clip_ammo = 30;
     public float fire_rate = 7;

@@ -87,7 +87,6 @@ public class weapon_management : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void shoot(weapon wp)
     {
         Vector3 direction = wp_obj.transform.forward;
@@ -99,7 +98,16 @@ public class weapon_management : MonoBehaviour {
         {
             if (result.collider.gameObject.CompareTag("Zombie"))
             {
-                result.collider.gameObject.GetComponent<zombie_manager>().deal_damages(weapons[index].damages);
+                zombie_manager zb_manager = result.collider.gameObject.GetComponent<zombie_manager>();
+                if (zb_manager.deal_damages(weapons[index].damages))
+                {
+                    dc.st.add_points(zb_manager.stats.diffuculty * 10);
+                }
+                else
+                {
+                    dc.st.add_points(1);
+                }
+                dc.ui.refresh_points();
             }
             Debug.Log("touché");
         }

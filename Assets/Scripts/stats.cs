@@ -10,6 +10,7 @@ public class stats : MonoBehaviour {
 	public float maxHealth;
     public float maxhealth_boosted;
 	public float curHealth;
+    public int points;
 
     public float to_maxhealth_speed;
 
@@ -17,6 +18,7 @@ public class stats : MonoBehaviour {
     {
         dc = GetComponent<data_center>();
         dc.ui.refresh_health();
+        dc.ui.refresh_points();
     }
 
     public void add_health(float health)
@@ -37,6 +39,11 @@ public class stats : MonoBehaviour {
             Debug.Log("Dead !");
         }
         dc.ui.refresh_health();
+    }
+
+    public void add_points(int point_added)
+    {
+        points += point_added;
     }
 
     void Update()

@@ -15,12 +15,14 @@ public class zombie_manager : MonoBehaviour {
 		
 	}
 
-    public void deal_damages(int dmg)
+    public bool deal_damages(int dmg)
     {
         stats.curr_hp -= dmg;
         if (stats.curr_hp <= 0)
         {
             Destroy(this.gameObject);
+            return (true);
         }
+        return (false);
     }
 }
