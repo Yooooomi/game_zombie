@@ -6,21 +6,14 @@ public class zombie_manager : MonoBehaviour {
 
     public ParticleSystem particles;
     public zombie_class stats;
-	// Use this for initialization
-	void Start () {
-        stats = new zombie_class();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
 
     public bool deal_damages(int dmg)
     {
+        ParticleSystem.EmissionModule em = particles.emission;
         stats.curr_hp -= dmg;
-        if (stats.curr_hp < 1 / 2 * stats.max_hp)
-            particles.emission.rateOverTime = 
+        if (stats.curr_hp < stats.max_hp)
+            em.rateOverTime = 5 + (15 - 15 * (stats.curr_hp / stats.max_hp));
         if (stats.curr_hp <= 0)
         {
             Destroy(this.gameObject);
