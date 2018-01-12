@@ -10,6 +10,7 @@ public class object_spawner : MonoBehaviour {
     public bool obj_on = false;
     private const float random_influance = 10;
     private data_base_spawner data;
+    public List<int> spawn_rate;
     // Use this for initialization
 
     private float get_new_spawn_wait ()
@@ -30,10 +31,15 @@ public class object_spawner : MonoBehaviour {
             time_last_spawn += Time.deltaTime;
         if (spawn_wait < time_last_spawn && !obj_on)
         {
+            GameObject to_instaciate;
             Debug.Log("Spawn");
             pos = transform.position;
             pos.y += 1;
-            GameObject obj = Instantiate(data.get_spawn_obj(), pos, Quaternion.identity);
+            if (spawn_rate.Count != 3)
+                to_instaciate = data.get_spawn_obj();
+            else
+                to_instaciate = data.get_spawn_obj(spawn_rate[0], spawn_rate[1], spawn_rate[2]);
+            GameObject obj = Instantiate(to_instaciate, pos, Quaternion.identity);
             obj.GetComponent<obj_taking>().spawner = this;
             obj.GetComponent<obj_taking>().owner = this.gameObject;
             obj_on = true;

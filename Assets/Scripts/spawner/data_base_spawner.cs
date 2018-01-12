@@ -17,4 +17,17 @@ public class data_base_spawner : MonoBehaviour {
         else
             return (epic_obj[Random.Range(0, epic_obj.Count - 1)]);
     }
+
+    public GameObject get_spawn_obj(int rate_ez, int rate_rare, int reate_epic)
+    {
+        int rand = Random.Range(0, 100);
+        if (rand < rate_ez)
+            return (common_obj[Random.Range(0, common_obj.Count - 1)]);
+        else if (rand < rate_rare)
+            return (rare_obj[Random.Range(0, rare_obj.Count - 1)]);
+        else
+            return (epic_obj[Random.Range(0, epic_obj.Count - 1)]);
+    }
+
+
 }

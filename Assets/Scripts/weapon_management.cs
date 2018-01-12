@@ -11,7 +11,7 @@ public class weapon_management : MonoBehaviour {
     private const int SHOTGUN_INDEX = 2;
 
     public data_center dc;
-    public GameObject wp_obj;
+    public GameObject wp_obj;    
     public Camera cam;
     public int index = 0;
     public List<weapon> weapons = new List<weapon>();
