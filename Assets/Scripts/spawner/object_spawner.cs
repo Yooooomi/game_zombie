@@ -13,6 +13,7 @@ public class object_spawner : MonoBehaviour {
     public int standard_spawn_rate = 60;
     public int rare_spawn_rate = 25;
     public int epic_spawn_rate = 15;
+    public bool is_activated = true;
 
     // Use this for initialization
 
@@ -30,9 +31,9 @@ public class object_spawner : MonoBehaviour {
 	void Update () {
         Vector3 pos;
 
-        if (!obj_on)
+        if (is_activated && !obj_on)
             time_last_spawn += Time.deltaTime;
-        if (spawn_wait < time_last_spawn && !obj_on)
+        if (is_activated && spawn_wait < time_last_spawn && !obj_on)
         {
             GameObject to_instatiate;
             Debug.Log("Spawn");

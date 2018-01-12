@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 65213964785430508}
   m_Layer: 0
   m_Name: health_pack_low
-  m_TagString: Untagged
+  m_TagString: pick_up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1447932416333214}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.0112557, y: 0.9108896, z: 0.61068845}

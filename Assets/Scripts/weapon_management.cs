@@ -18,6 +18,7 @@ public class weapon_management : MonoBehaviour {
     private float time_since_last_shoot = 0;
     public GameObject weapon_box;
     public List<int> ammos = new List<int>();
+    public GameObject bullet;
 
     // Use this for initialization
 	void Start () {
@@ -94,6 +95,8 @@ public class weapon_management : MonoBehaviour {
         RaycastHit result;
 
         Debug.DrawLine(ray.origin, ray.direction * 1000, Color.black);
+        GameObject obj = Instantiate(bullet, wp_obj.transform.position, Quaternion.identity);
+        obj.GetComponent<bullet_managment>().vect_speed = direction;
         if (Physics.Raycast(ray, out result, wp.range))
         {
             if (result.collider.gameObject.CompareTag("Zombie"))
