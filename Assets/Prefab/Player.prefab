@@ -493,11 +493,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dc: {fileID: 114238975778230570}
   wp_obj: {fileID: 1980510678202312}
+  line: {fileID: 1007503467229142, guid: 2764f3bf426296f42927da890fcd34e9, type: 2}
   cam: {fileID: 0}
   index: 0
   weapons: []
   weapon_box: {fileID: 1713126123667168, guid: a8d5893bbaccc0d4aa7a2cd235920cb7, type: 2}
   ammos: 
+  bullet: {fileID: 1222898787884710, guid: 3871b100323564142ad7523e44d1136f, type: 2}
 --- !u!114 &114361678819667220
 MonoBehaviour:
   m_ObjectHideFlags: 1

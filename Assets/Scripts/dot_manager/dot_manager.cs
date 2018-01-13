@@ -7,6 +7,7 @@ public class dot_manager : MonoBehaviour {
 
     private List<Action<data_center>> list_dot_fct = new List<Action<data_center>>();
     private data_center dc;
+    private Dictionary<string, Coroutine> dots = new Dictionary<string, Coroutine>();
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class dot_manager : MonoBehaviour {
         dc.remove_func(func.func, tab);
     }
 
-    public void add_dot_perk(Func<float, float> func, int prio, float time, string type)
+    public void add_dot_perk(Func<float, float> func, int prio, float time, string type, string id)
     {
         List<perk_func> funcc;
 
@@ -42,14 +43,32 @@ public class dot_manager : MonoBehaviour {
             case "dm":
                 funcc = dc.func_damages_malus;
                 break;
+            case "ms":
+                funcc = dc.func_speed;
+                break;
+            case "msm":
+                funcc = dc.func_speed_malus;
+                break;
             default:
                 return;
         }
-        perk_func f = new perk_func(func, prio);
+        perk_func f = new perk_func(id, func, 1);
         dc.add_func(f, funcc);
         if (time > 0)
         {
-            StartCoroutine(perk_cooldown(f, funcc, time));
+            if (dots.ContainsKey(f.nm))
+            {
+                Coroutine to_stop = null;
+                if (dots.TryGetValue(f.nm, out to_stop))
+                {
+                    StopCoroutine(to_stop);
+                    dots[f.nm] = StartCoroutine(perk_cooldown(f, funcc, time));
+                }
+            }
+            else
+            {
+                dots.Add(f.nm, StartCoroutine(perk_cooldown(f, funcc, time)));
+            }
         }
     }
 
