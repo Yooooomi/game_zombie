@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
+using System.Linq;
 
 public class movement : MonoBehaviour {
 
@@ -23,19 +24,20 @@ public class movement : MonoBehaviour {
 
 	void lookAtMouse()
 	{
+        RaycastHit[] hits;
 		Vector3 mousePos = Input.mousePosition;
 		Vector3 tmp = Vector3.zero;
 		Ray ray = cam.ScreenPointToRay (mousePos);
         RaycastHit result;
         Quaternion angle;
 
-        if (Physics.Raycast (ray, out result)) {
-			tmp = result.point;
-			tmp.y = wp_obj.transform.position.y;
-			tmp = tmp - wp_obj.transform.position;
-            angle = Quaternion.LookRotation(tmp);
-            transform.rotation = Quaternion.Lerp(wp_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
-		}
+        hits = Physics.RaycastAll(ray);
+        result = hits.First(s => s.collider.gameObject.CompareTag("Ground"));
+		tmp = result.point;
+		tmp.y = wp_obj.transform.position.y;
+		tmp = tmp - wp_obj.transform.position;
+        angle = Quaternion.LookRotation(tmp);
+        transform.rotation = Quaternion.Lerp(wp_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
 	}
 
 	// Update is called once per frame
