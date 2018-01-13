@@ -27,7 +27,7 @@ public class dot_manager : MonoBehaviour {
 
     public void add_dot_perk(Func<float, float> func, int prio, float time, string type)
     {
-        List<perk_func> funcc = null;
+        List<perk_func> funcc;
 
         switch (type) {
             case "h":

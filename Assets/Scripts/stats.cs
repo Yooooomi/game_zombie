@@ -20,14 +20,6 @@ public class stats : MonoBehaviour {
         dc = GetComponent<data_center>();
         dc.ui.refresh_health();
         dc.ui.refresh_points();
-        dc.dot.add_dot_perk(double_health_perk.double_health, 1, 5, "h");
-        dc.dot.add_dot(test, 100);
-        add_health(100);
-    }
-
-    private void test(data_center dc)
-    {
-        dc.st.deal_damages(10 * Time.deltaTime);
     }
 
     private float get_real_health(float health)

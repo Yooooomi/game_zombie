@@ -6,7 +6,6 @@ using System.Linq;
 
 public class data_center : MonoBehaviour
 {
-
     public stats st;
     public Camera cam;
     public weapon_management wp_man;
