@@ -5,6 +5,7 @@ using System;
 
 public class zombie_spawner : MonoBehaviour {
 
+    public bool is_active = true;
     private List<GameObject> zombie_list;
     private Func<float> get_time_spawn;
     private float time_since_last_spawn = 0;
@@ -20,7 +21,7 @@ public class zombie_spawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time_since_last_spawn += Time.deltaTime;
-		if (time_since_last_spawn > get_time_spawn() * last_difficulty)
+		if (is_active && time_since_last_spawn > get_time_spawn() * last_difficulty)
         {
             Vector3 pos = transform.position;
             GameObject zb;

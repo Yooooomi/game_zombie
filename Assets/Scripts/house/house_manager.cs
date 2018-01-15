@@ -9,11 +9,22 @@ public class house_manager : MonoBehaviour {
     public List<GameObject> roof;
     public float fade_speed = 10f;
     public bool is_inhouse = false;
-    private List<Material> roof_mat;
+    public List<GameObject> door_list;
+    public List<GameObject> obj_spawner_list;
+    public List<GameObject> zombie_spawner_list;
 
-	void Start () {
+    private bool opened = false;
+
+    //private List<Material> roof_mat;
+
+    void Start () {
         //foreach (GameObject rf in roof)
-            //roof_mat.Add(rf.GetComponent<Renderer>().material);
+        //roof_mat.Add(rf.GetComponent<Renderer>().material);
+        opened = is_inhouse ? true : opened;
+        foreach (GameObject door in door_list)
+        {
+            door.GetComponent<door_management>().open_call_fct = opening_house;
+        }
 	}
 
     private void target_alpha(float target)
@@ -44,11 +55,28 @@ public class house_manager : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        is_inhouse = true;
+        if (other.CompareTag("Player") == true)
+            is_inhouse = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        is_inhouse = false;
+        if (other.CompareTag("Player") == true)
+            is_inhouse = false;
+    }
+
+    public void opening_house()
+    {
+        if (!opened)
+        {
+            foreach (GameObject obj in obj_spawner_list)
+            {
+                obj.GetComponent<object_spawner>().is_activated = true;
+            }
+            foreach (GameObject obj in zombie_spawner_list)
+            {
+                obj.GetComponent<zombie_spawner>().is_active = true;
+            }
+        }
     }
 }

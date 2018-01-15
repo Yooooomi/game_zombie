@@ -8,7 +8,7 @@ public class game_data_base : MonoBehaviour {
     public List<GameObject> player_list;
 
     public List<GameObject> zombie_list;
-    private float time_spawn_zombie = 3;
+    public float time_spawn_zombie = 3;
 
 	// Use this for initialization
 	void Awake () {
