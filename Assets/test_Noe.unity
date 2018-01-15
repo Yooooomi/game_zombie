@@ -152,6 +152,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1242504692438846, guid: ab46b07d03b481241aff8c8e083c14c1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab46b07d03b481241aff8c8e083c14c1, type: 2}
   m_IsPrefabParent: 0
@@ -494,7 +498,7 @@ GameObject:
   - component: {fileID: 263931896}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,14 +580,14 @@ GameObject:
   - component: {fileID: 312112190}
   - component: {fileID: 312112189}
   - component: {fileID: 312112188}
-  - component: {fileID: 312112187}
-  - component: {fileID: 312112186}
+  - component: {fileID: 312112181}
   - component: {fileID: 312112185}
+  - component: {fileID: 312112187}
+  - component: {fileID: 312112180}
   - component: {fileID: 312112184}
   - component: {fileID: 312112183}
   - component: {fileID: 312112182}
-  - component: {fileID: 312112181}
-  - component: {fileID: 312112180}
+  - component: {fileID: 312112186}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -899,6 +903,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c5a54eaf149190047b829d06ea6971f8, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &447233540
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428918180092488, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c3dad3dacdd996741b1e0fc5be1be35a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &497997420
 GameObject:
@@ -1279,6 +1325,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1242504692438846, guid: ab46b07d03b481241aff8c8e083c14c1, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ab46b07d03b481241aff8c8e083c14c1, type: 2}
   m_IsPrefabParent: 0
@@ -1590,7 +1640,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -1701,7 +1751,7 @@ GameObject:
   - component: {fileID: 1573433158}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1790,7 +1840,7 @@ GameObject:
   - component: {fileID: 1680319801}
   m_Layer: 0
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

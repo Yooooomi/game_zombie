@@ -8,6 +8,7 @@ TagManager:
   - Zombie
   - House
   - Ground
+  - roof
   layers:
   - Default
   - TransparentFX
