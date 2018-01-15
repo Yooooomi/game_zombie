@@ -13,7 +13,7 @@ public class double_health_perk : perk {
     public override void add_on(data_center dc)
     {
         base.add_on(dc);
-        dc.func_health.Add(new perk_func(double_health, 1));
+        dc.func_health.Add(new perk_func("perk_double_health", double_health, 1));
     }
 
     public override void remove_on(data_center dc)

@@ -17,11 +17,29 @@ public class data_center : MonoBehaviour
     public List<perk_func> func_health_malus = new List<perk_func>();
     public List<perk_func> func_damages = new List<perk_func>();
     public List<perk_func> func_damages_malus = new List<perk_func>();
+    public List<perk_func> func_speed = new List<perk_func>();
+    public List<perk_func> func_speed_malus = new List<perk_func>();
 
     public void add_func(perk_func func, List<perk_func> tab)
     {
-        tab.Add(func);
-        tab.OrderBy(s => s.priority);
+        if (!tab.Any(s => s.nm == func.nm))
+        {
+            tab.Add(func);
+            tab.OrderBy(s => s.priority);
+        }
+    }
+
+    public float get_real_move_speed(float speed)
+    {
+        for (int i = 0; i < func_speed.Count; i++)
+        {
+            speed = func_speed[i].func(speed);
+        }
+        for (int i = 0; i < func_speed_malus.Count; i++)
+        {
+            speed = func_speed_malus[i].func(speed);
+        }
+        return (speed);
     }
 
     public void remove_func(Func<float, float> func, List<perk_func> tab)
@@ -32,10 +50,5 @@ public class data_center : MonoBehaviour
     private void Awake()
     {
         dot = GetComponent<dot_manager>();
-    }
-
-    void Update()
-    {
-        
     }
 }

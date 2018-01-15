@@ -11,7 +11,8 @@ public class weapon_management : MonoBehaviour {
     private const int SHOTGUN_INDEX = 2;
 
     public data_center dc;
-    public GameObject wp_obj;    
+    public GameObject wp_obj;
+    public GameObject line;
     public Camera cam;
     public int index = 0;
     public List<weapon> weapons = new List<weapon>();
@@ -88,15 +89,22 @@ public class weapon_management : MonoBehaviour {
         }
     }
 
+    void draw_shot(Vector3 start, Vector3 end)
+    {
+        GameObject obj = Instantiate(line, transform.position, Quaternion.identity, this.gameObject.transform);
+        LineRenderer l = obj.GetComponent<LineRenderer>();
+
+        l.positionCount = 2;
+        l.SetPosition(0, start);
+        l.SetPosition(1, end);
+    }
+
     void shoot(weapon wp)
     {
         Vector3 direction = wp_obj.transform.forward;
         Ray ray = new Ray(wp_obj.transform.position, direction);
         RaycastHit result;
 
-        Debug.DrawLine(ray.origin, ray.direction * 1000, Color.black);
-        GameObject obj = Instantiate(bullet, wp_obj.transform.position, Quaternion.identity);
-        obj.GetComponent<bullet_managment>().vect_speed = direction;
         if (Physics.Raycast(ray, out result, wp.range))
         {
             if (result.collider.gameObject.CompareTag("Zombie"))
@@ -113,6 +121,11 @@ public class weapon_management : MonoBehaviour {
                 dc.ui.refresh_points();
             }
             Debug.Log("touché");
+            draw_shot(wp_obj.transform.position, result.point);
+        }
+        else
+        {
+            draw_shot(wp_obj.transform.position, wp_obj.transform.position + wp_obj.transform.forward * 100);
         }
         wp.clip_ammo--;
         dc.ui.refresh_weapon();

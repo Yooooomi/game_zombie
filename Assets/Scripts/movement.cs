@@ -6,7 +6,7 @@ using System.Linq;
 
 public class movement : MonoBehaviour {
 
-	private stats st;
+    private data_center dc;
     private CharacterController cc;
 
 	public Camera cam;
@@ -17,8 +17,8 @@ public class movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        dc = GetComponent<data_center>();
         cc = GetComponent<CharacterController>();
-		st = GetComponent<stats> ();
 		Debug.Log("Commencé");
 	}
 
@@ -46,13 +46,15 @@ public class movement : MonoBehaviour {
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         Vector3 dir = Vector3.zero;
         bool isSprint = CrossPlatformInputManager.GetButton("Sprint");
+        float tmp_move_speed = dc.st.moveSpeed;
 
         is_interact = CrossPlatformInputManager.GetButtonDown("Interact");
 		if (h != 0 || v != 0) {
 			dir = new Vector3 (h, 0, v);
-            dir *= st.moveSpeed / dir.magnitude;
+            tmp_move_speed = dc.get_real_move_speed(tmp_move_speed);
+            dir *= tmp_move_speed / dir.magnitude;
             if (isSprint)
-                dir *= st.sprintMultiplier;
+                dir *= dc.st.sprintMultiplier;
             dir *= Time.deltaTime;
 		}
         if (!cc.isGrounded)
