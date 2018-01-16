@@ -14,6 +14,9 @@ public class movement : MonoBehaviour {
     public bool is_interact = false;
 
     public GameObject wp_obj;
+    public GameObject aim_obj;
+
+    public bool is_accurate = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,32 +25,45 @@ public class movement : MonoBehaviour {
 		Debug.Log("Commencé");
 	}
 
-	void lookAtMouse()
-	{
+    void lookAtMouse()
+    {
         RaycastHit[] hits;
-		Vector3 mousePos = Input.mousePosition;
-		Vector3 tmp = Vector3.zero;
-		Ray ray = cam.ScreenPointToRay (mousePos);
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 tmp = Vector3.zero;
+        Ray ray = cam.ScreenPointToRay(mousePos);
         RaycastHit result;
         Quaternion angle;
 
         hits = Physics.RaycastAll(ray);
-        result = hits.First(s => s.collider.gameObject.CompareTag("Ground"));
-		tmp = result.point;
-		tmp.y = wp_obj.transform.position.y;
-		tmp = tmp - wp_obj.transform.position;
+        hits.OrderBy(s => Vector3.Distance(ray.origin, s.transform.position));
+        result = hits.First(s => !s.collider.isTrigger && !s.collider.gameObject.CompareTag("Player") && !s.collider.gameObject.CompareTag("Zombie"));
+        tmp = result.point;
+        tmp.y += aim_obj.transform.position.y;
+        tmp = tmp - wp_obj.transform.position;
+        tmp.y = 0;
         angle = Quaternion.LookRotation(tmp);
-        transform.rotation = Quaternion.Lerp(wp_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
-	}
+        transform.rotation = Quaternion.Lerp(aim_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
+        if (is_accurate)
+        {
+            wp_obj.transform.LookAt(result.point);
+        }
+        else
+        {
+            wp_obj.transform.rotation = transform.rotation;
+        }
+    }
 
 	// Update is called once per frame
 	void Update () {
         float v = CrossPlatformInputManager.GetAxis("Vertical");
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
-        Vector3 dir = Vector3.zero;
         bool isSprint = CrossPlatformInputManager.GetButton("Sprint");
+        bool change_accuracy = CrossPlatformInputManager.GetButtonDown("Accurate_mode");
+        Vector3 dir = Vector3.zero;
         float tmp_move_speed = dc.st.moveSpeed;
 
+        if (change_accuracy)
+            is_accurate = !is_accurate;
         is_interact = CrossPlatformInputManager.GetButtonDown("Interact");
 		if (h != 0 || v != 0) {
 			dir = new Vector3 (h, 0, v);
