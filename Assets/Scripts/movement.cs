@@ -27,24 +27,22 @@ public class movement : MonoBehaviour {
 
     void lookAtMouse()
     {
-        RaycastHit[] hits;
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 tmp = Vector3.zero;
-        Ray ray = cam.ScreenPointToRay(mousePos);
-        RaycastHit result;
-        Quaternion angle;
+        Vector3 mouse_pos = Input.mousePosition;
+        Vector3 aim_pos = cam.WorldToScreenPoint(aim_obj.transform.position);
+        Vector3 v_angle = mouse_pos - aim_pos;
+        v_angle = new Vector3(v_angle.x, 0, v_angle.y);
+        Quaternion angle = Quaternion.LookRotation(v_angle);
 
-        hits = Physics.RaycastAll(ray);
-        hits.OrderBy(s => Vector3.Distance(ray.origin, s.transform.position));
-        result = hits.First(s => !s.collider.isTrigger && !s.collider.gameObject.CompareTag("Player") && !s.collider.gameObject.CompareTag("Zombie"));
-        tmp = result.point;
-        tmp.y += aim_obj.transform.position.y;
-        tmp = tmp - wp_obj.transform.position;
-        tmp.y = 0;
-        angle = Quaternion.LookRotation(tmp);
         transform.rotation = Quaternion.Lerp(aim_obj.transform.rotation, angle, rotateSpeed * Time.deltaTime);
         if (is_accurate)
         {
+            RaycastHit[] hits;
+            RaycastHit result;
+            Ray ray = cam.ScreenPointToRay(mouse_pos);
+
+            hits = Physics.RaycastAll(ray);
+            hits.OrderBy(s => Vector3.Distance(ray.origin, s.transform.position));
+            result = hits.First(s => !s.collider.isTrigger && !s.collider.gameObject.CompareTag("Player") && !s.collider.gameObject.CompareTag("Zombie"));
             wp_obj.transform.LookAt(result.point);
         }
         else

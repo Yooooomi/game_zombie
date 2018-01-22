@@ -74,6 +74,7 @@ public class stats : MonoBehaviour {
             curHealth -= to_maxhealth_speed * Time.deltaTime;
             if (curHealth < maxHealth)
                 curHealth = maxHealth;
+            dc.ui.refresh_health();
         }
     }
 }
