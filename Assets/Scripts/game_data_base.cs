@@ -9,6 +9,7 @@ public class game_data_base : MonoBehaviour {
     public List<GameObject> zombie_list;
     public float time_spawn_zombie = 3f;
     public float time_per_day = 60f;
+    public float max_intens = 1f;
 
     private float actual_time = 30f;
 

@@ -9,7 +9,6 @@ public class house_manager : MonoBehaviour {
     public List<GameObject> roof;
     public float fade_speed = 10f;
     public bool is_inhouse = false;
-    public List<GameObject> door_list;
     public List<GameObject> obj_spawner_list;
     public List<GameObject> zombie_spawner_list;
 
@@ -21,10 +20,6 @@ public class house_manager : MonoBehaviour {
         //foreach (GameObject rf in roof)
         //roof_mat.Add(rf.GetComponent<Renderer>().material);
         opened = is_inhouse ? true : opened;
-        foreach (GameObject door in door_list)
-        {
-            door.GetComponent<door_management>().open_call_fct = opening_house;
-        }
 	}
 
     private void target_alpha(float target)

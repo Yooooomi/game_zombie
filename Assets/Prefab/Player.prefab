@@ -94,6 +94,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1479225554562824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4033361974890030}
+  - component: {fileID: 108186240472795768}
+  m_Layer: 0
+  m_Name: Point light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1494201145216582
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +283,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4033361974890030
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479225554562824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42, y: 0.76, z: 0.76}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4723231683102928}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4138915998579890
 Transform:
   m_ObjectHideFlags: 1
@@ -286,7 +315,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1711146475181454}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.397, y: 1.018, z: 0.211}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -343,11 +372,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1761566350946764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.5, y: 0.28, z: -15.3}
+  m_LocalPosition: {x: -4.3, y: 0.9, z: -6.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4499897433666612}
   - {fileID: 224998720435296126}
+  - {fileID: 4033361974890030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -448,6 +478,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!108 &108186240472795768
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479225554562824}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 3.5
+  m_Range: 61.74906
+  m_SpotAngle: 57.1
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114147375008803642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,7 +586,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 67
 --- !u!114 &114330987010235308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,9 +603,27 @@ MonoBehaviour:
   line: {fileID: 1007503467229142, guid: 2764f3bf426296f42927da890fcd34e9, type: 2}
   cam: {fileID: 0}
   index: 0
-  weapons: []
+  weapons:
+  - Name: defaut
+    auto: 1
+    damages: 40
+    clip_cap: 30
+    clip_ammo: 23
+    fire_rate: 7
+    reload_time: 0.5
+    range: 100
+    type: 0
+  - Name: defaut
+    auto: 1
+    damages: 40
+    clip_cap: 30
+    clip_ammo: 30
+    fire_rate: 7
+    reload_time: 0.5
+    range: 100
+    type: 0
   weapon_box: {fileID: 1713126123667168, guid: a8d5893bbaccc0d4aa7a2cd235920cb7, type: 2}
-  ammos: 
+  ammos: 430000005a0000005a000000
   bullet: {fileID: 1222898787884710, guid: 3871b100323564142ad7523e44d1136f, type: 2}
 --- !u!114 &114361678819667220
 MonoBehaviour:
@@ -573,7 +657,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: points
+  m_Text: 0
 --- !u!114 &114416280669079532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,7 +706,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: health
+  m_Text: 100
 --- !u!114 &114504064696104846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -675,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 90
 --- !u!114 &114519860930539350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,7 +792,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 90
 --- !u!114 &114597536782044776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -798,7 +882,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: weapon ammo
+  m_Text: defaut
 --- !u!114 &114915355130354630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -831,7 +915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: weapon name
+  m_Text: 23 / 67
 --- !u!136 &136248095418666628
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -15,6 +15,6 @@ public class light_management : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        l.intensity = (0.5f - Mathf.Abs(db.get_time_day() - 0.5f)) / 0.5f;
+        l.intensity = ((0.5f - Mathf.Abs(db.get_time_day() - 0.5f)) / 0.5f) * db.max_intens;
 	}
 }
