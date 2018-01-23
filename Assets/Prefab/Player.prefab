@@ -488,9 +488,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.5
-  m_Range: 61.74906
-  m_SpotAngle: 57.1
+  m_Intensity: 3
+  m_Range: 128.79341
+  m_SpotAngle: 72.82219
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -608,7 +608,25 @@ MonoBehaviour:
     auto: 1
     damages: 40
     clip_cap: 30
-    clip_ammo: 23
+    clip_ammo: 18
+    fire_rate: 7
+    reload_time: 0.5
+    range: 100
+    type: 0
+  - Name: defaut
+    auto: 1
+    damages: 40
+    clip_cap: 30
+    clip_ammo: 30
+    fire_rate: 7
+    reload_time: 0.5
+    range: 100
+    type: 0
+  - Name: defaut
+    auto: 1
+    damages: 40
+    clip_cap: 30
+    clip_ammo: 30
     fire_rate: 7
     reload_time: 0.5
     range: 100
@@ -623,7 +641,7 @@ MonoBehaviour:
     range: 100
     type: 0
   weapon_box: {fileID: 1713126123667168, guid: a8d5893bbaccc0d4aa7a2cd235920cb7, type: 2}
-  ammos: 430000005a0000005a000000
+  ammos: 430000005a0000005a0000005a0000005a0000005a000000
   bullet: {fileID: 1222898787884710, guid: 3871b100323564142ad7523e44d1136f, type: 2}
 --- !u!114 &114361678819667220
 MonoBehaviour:
@@ -915,7 +933,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 23 / 67
+  m_Text: 18 / 67
 --- !u!136 &136248095418666628
 CapsuleCollider:
   m_ObjectHideFlags: 1
