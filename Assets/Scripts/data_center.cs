@@ -12,6 +12,7 @@ public class data_center : MonoBehaviour
     public ui_manager ui;
     public movement mov;
     public dot_manager dot;
+    public game_data_base db;
 
     public List<perk_func> func_health = new List<perk_func>();
     public List<perk_func> func_health_malus = new List<perk_func>();
@@ -49,6 +50,7 @@ public class data_center : MonoBehaviour
 
     private void Awake()
     {
+        db = GameObject.Find("Database").GetComponent<game_data_base>();
         dot = GetComponent<dot_manager>();
     }
 }

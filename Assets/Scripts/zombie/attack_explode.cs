@@ -9,7 +9,7 @@ public class attack_explode : attack_manager
 
     public override bool attack(data_center dc)
     {
-        foreach (GameObject ply in list_player)
+        foreach (GameObject ply in db.player_list)
             if (Vector3.Distance(ply.transform.position, transform.position) <= attack_distance)
             {
                 dc.st.deal_damages(ref_zombie.damage);

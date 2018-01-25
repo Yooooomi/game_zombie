@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using System.Linq;
 
-public class weapon_management : MonoBehaviour {
+public class weapon_management : Photon.MonoBehaviour {
 
     private const int RIFLE_INDEX = 0;
     private const int GUN_INDEX = 1;
@@ -13,7 +13,6 @@ public class weapon_management : MonoBehaviour {
     public data_center dc;
     public GameObject wp_obj;
     public GameObject line;
-    public Camera cam;
     public int index = 0;
     public List<weapon> weapons = new List<weapon>();
     private float time_since_last_shoot = 0;
@@ -21,8 +20,8 @@ public class weapon_management : MonoBehaviour {
     public List<int> ammos = new List<int>();
     public GameObject bullet;
 
-    // Use this for initialization
-	void Start () {
+    void Start()
+    {
         for (int i = 0; i < 3; i++)
         {
             ammos.Add(90);
@@ -38,6 +37,7 @@ public class weapon_management : MonoBehaviour {
         ammos[type] += amount;
     }
 
+    [PunRPC]
     public bool reload()
     {
         weapon wp = weapons[index];
@@ -59,6 +59,7 @@ public class weapon_management : MonoBehaviour {
         return (true);
     }
 
+    [PunRPC]
     bool drop_weapon()
     {
         if (weapons.Count < 2)
@@ -89,6 +90,7 @@ public class weapon_management : MonoBehaviour {
         }
     }
 
+    [PunRPC]
     void draw_shot(Vector3 start, Vector3 end)
     {
         GameObject obj = Instantiate(line, transform.position, Quaternion.identity, this.gameObject.transform);
@@ -99,13 +101,15 @@ public class weapon_management : MonoBehaviour {
         l.SetPosition(1, end);
     }
 
-    void shoot(weapon wp)
+    [PunRPC]
+    void shoot()
     {
         Vector3 direction = wp_obj.transform.forward;
         Ray ray = new Ray(wp_obj.transform.position, direction);
         RaycastHit result;
+        weapon current_weapon = weapons[index];
 
-        if (Physics.Raycast(ray, out result, wp.range))
+        if (Physics.Raycast(ray, out result, current_weapon.range))
         {
             if (result.collider.gameObject.CompareTag("Zombie"))
             {
@@ -127,8 +131,14 @@ public class weapon_management : MonoBehaviour {
         {
             draw_shot(wp_obj.transform.position, wp_obj.transform.position + wp_obj.transform.forward * 100);
         }
-        wp.clip_ammo--;
+        current_weapon.clip_ammo--;
         dc.ui.refresh_weapon();
+    }
+
+    [PunRPC]
+    void change_weapon(int ind)
+    {
+        index = ind;
     }
 
     void Update() {
@@ -138,10 +148,13 @@ public class weapon_management : MonoBehaviour {
         float scroll = CrossPlatformInputManager.GetAxis("Mouse ScrollWheel");
         bool reloading = CrossPlatformInputManager.GetButtonDown("Reload");
 
+        if (!photonView.isMine)
+            return;
         if (reloading)
         {
             if (reload())
             {
+                photonView.RPC("reload", PhotonTargets.All);
                 time_since_last_shoot = - current_weapon.reload_time;
             }
         }
@@ -153,21 +166,21 @@ public class weapon_management : MonoBehaviour {
         {
             shooting = CrossPlatformInputManager.GetButtonDown("Fire1");
         }
-
         time_since_last_shoot += Time.deltaTime;
         if (shooting && time_since_last_shoot > current_weapon.get_fire_rate() && current_weapon.can_fire()) {
-            shoot(current_weapon);
+            photonView.RPC("shoot", PhotonTargets.All);
             time_since_last_shoot = 0;
         }
         if (scroll > 0)
         {
-            index = (index + 1) % weapons.Count;
+            photonView.RPC("change_weapon", PhotonTargets.All, (index + 1) % weapons.Count);
         }
         else if (scroll < 0)
         {
             index = (index - 1) % weapons.Count;
             if (index < 0)
                 index = weapons.Count - 1;
+            photonView.RPC("change_weapon", PhotonTargets.All, index);
         }
         if (scroll != 0)
         {
@@ -175,10 +188,8 @@ public class weapon_management : MonoBehaviour {
         }
         if (drop)
         {
-            if (drop_weapon())
-            {
-                dc.ui.refresh_weapon();
-            }
+            photonView.RPC("drop_weapon", PhotonTargets.All);
+            dc.ui.refresh_weapon();
         }
     }
 }

@@ -7,12 +7,12 @@ using System.Linq;
 public class zombie_mvt : MonoBehaviour {
 
     private Seeker seeker;
-    private GameObject player;
     private CharacterController cc;
 
     public float reload_time = 2;
     public float min_dist;
     private zombie_manager zb_manager;
+    private attack_manager att_man;
 
     private Path path = null;
     private float current_time = 0;
@@ -20,16 +20,15 @@ public class zombie_mvt : MonoBehaviour {
 
     void Start()
     {
+        att_man = GetComponent<attack_manager>();
         zb_manager = GetComponent<zombie_manager>();
         cc = GetComponent<CharacterController>();
-        player = GameObject.Find("Player");
         seeker = GetComponent<Seeker>();
-        path = seeker.StartPath(transform.position, player.transform.position, end_path);
     }
 
     void end_path(Path p)
     {
-        Debug.Log("Arrived");
+        //Debug.Log("Arrived");
     }
 
     void Update()
@@ -37,9 +36,9 @@ public class zombie_mvt : MonoBehaviour {
         Vector3 dir;
 
         current_time += Time.deltaTime;
-        if (current_time >= reload_time)
+        if (current_time >= reload_time && att_man.target)
         {
-            path = seeker.StartPath(transform.position, player.transform.position, end_path);
+            path = seeker.StartPath(transform.position, att_man.target.transform.position, end_path);
             current_time = 0;
             current_index = 0;
         }
@@ -47,7 +46,6 @@ public class zombie_mvt : MonoBehaviour {
             return;
         if (current_index > path.vectorPath.Count - 1)
             return;
-
         dir = (path.vectorPath[current_index] - transform.position).normalized;
         dir *= zb_manager.stats.speed * Time.deltaTime * 100;
 

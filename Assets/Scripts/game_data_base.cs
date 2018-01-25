@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class game_data_base : MonoBehaviour {
+public class game_data_base : Photon.MonoBehaviour {
 
     public List<GameObject> player_list;
     public List<GameObject> zombie_list;
@@ -12,6 +12,12 @@ public class game_data_base : MonoBehaviour {
     public float max_intens = 1f;
 
     private float actual_time = 30f;
+
+    [PunRPC]
+    void refresh_players()
+    {
+        player_list = GameObject.FindGameObjectsWithTag("Player").ToList();
+    }
 
     // Use this for initialization
     void Awake () {
